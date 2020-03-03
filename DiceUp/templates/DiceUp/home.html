@@ -1,0 +1,48 @@
+{% extends 'DiceUp/base.html' %}
+
+
+
+{% block body %}
+{% load static %}
+<script src="{% static 'DiceUp/script.js' %}"></script>
+
+<div class="row justify-content-center">
+    <h2> </h2>
+</div>
+{% if message %}
+ <div class="alert alert-danger"><strong>{{message}}</strong></div>
+
+{% endif %}
+
+<div class="row justify-content-center">
+    <h3>Upload picture and this app will recreate it using images of 6 sided die. <a href="{% url 'DiceUp:example' %}">Example</a></h3><br>
+
+</div>
+<div class="row justify-content-center">
+    This process can take a while - please be patient.
+</div>
+<div class="row justify-content-center">
+    <img src="{% static 'DiceUp/Leonardo.gif'  %}" id="message" style="display:none">
+    <h1> </h1>
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <div class="card">
+        <div class="alert alert-dark text-center"><strong>Max file size is 200KB.</strong></div>
+        <form method="POST" enctype="multipart/form-data" name="DiceUpForm" onsubmit="revealMessage()">
+            {% csrf_token %}
+            {{form.as_p}}
+                <img src="{% static 'DiceUp/game.png' %}" class="img-fluid pl-2 pr-1" height="45" width="45">
+                <input class="slider" type="range" name="range" min="-8" max="-2">
+                <img src="{% static 'DiceUp/dice.png' %}" class="img-fluid" height="60" width="60">
+
+            <button class="btn btn-dark btn-lg btn-block" type="submit" name="button">Upload!</button>
+        </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

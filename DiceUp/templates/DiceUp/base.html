@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DiceUp</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'DiceUp/style.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+     <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="{% url 'DiceUp:home' %}">
+                <img src="{% static 'DiceUp/icon.png' %}" height="30" width="30">
+                DiceUp
+            </a>
+                            <!-- Collapse button -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#TopNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="TopNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-item">
+                        <a class="nav-link py-0" href="#">
+                            <img src="{% static 'DiceUp/about.png' %}" height="30" width="30">
+                            About
+                        </a>
+                    </li>
+                    <li class="navbar-item">
+                        <a class="nav-link py-0" href="#">
+                            <img src="{% static 'DiceUp/git-icon.png' %}" height="30" width="30">
+                            GitHub
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+<div class="container">
+    {% block body %}
+    {% endblock %}
+</div>
+</body>
+</html>
