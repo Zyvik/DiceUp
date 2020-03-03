@@ -1,16 +1,10 @@
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-from django.core.exceptions import ValidationError
-
-
-def validate_image(value):
-    if value.size > 250*1024:
-        raise ValidationError('Max size of image is 250KB, sorry.')
 
 
 class DiceUpModel(models.Model):
-    original_picture = models.ImageField(upload_to='DiceUp/', validators=[validate_image])
+    original_picture = models.ImageField(upload_to='DiceUp/')
     dice_picture = models.ImageField(default=None)
     instruction = models.FileField(default=None)
 
