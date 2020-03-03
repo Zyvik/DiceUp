@@ -1,0 +1,9 @@
+{% extends 'DiceUp/base.html' %}
+{% load static %}
+<title>DiceUp - example</title>
+{% block body %}
+    <h1> Original:</h1>
+<img src="{% static 'DiceUp/DiceUp.jpg' %}" class="img-fluid" alt="Well... You found bug">
+<h1>DiceUp:</h1>
+<img src="{% static 'DiceUp/DiceUp.png' %}" class="img-fluid" alt="Well... You found bug">
+{% endblock %}
