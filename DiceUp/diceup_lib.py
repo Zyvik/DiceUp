@@ -126,7 +126,7 @@ def create_results(dice_up_image, interval_list, lower_resolution_list, dice_lis
 
 
 def create_instruction_file(instruction_string, dice_up_image):
-    instruction_path = os.path.abspath(settings.MEDIA_ROOT + '/DiceUp/results/'
+    instruction_path = os.path.abspath(settings.MEDIA_ROOT + '/DiceUp/'
                                        + str(dice_up_image.model.pk) + 'instruction.txt')
     instruction = open(instruction_path, 'w')
 
