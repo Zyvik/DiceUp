@@ -9,11 +9,23 @@ class DiceUpImage:
 
     def __init__(self, image, slider_value, model, max_size_in_mb):
         self.image = Image.open(image)
-        self.resolution = abs(int(slider_value))
+        self.resolution = slider_value
         self.model = model
-        self.width = floor(self.image.size[0] / self.resolution)  # width of image in dice
-        self.height = floor(self.image.size[1] / self.resolution)  # height of image in dice
+        self.width = 0  # width of image in dice - its calculated in calculate_dimensions_in_dice
+        self.height = 0  # height of image in dice
         self.max_size_in_mb = max_size_in_mb
+
+    def calculate_dimensions_in_dice(self):
+        """calculate dimensions in dice if resolution (range slider) value is valid.
+        (ex: height = 20 dice, width = 10 dice, so 200 dice needed to create image) """
+        try:
+            self.resolution = abs(int(self.resolution))
+        except (TypeError, ZeroDivisionError):
+            self.resolution = 2
+
+        if self.resolution > 0:
+            self.width = floor(self.image.size[0] / self.resolution)  # width of image in dice
+            self.height = floor(self.image.size[1] / self.resolution)  # height of image in dice
 
     def get_error_message(self):
         """Verifies image, returns error message, ret. None when valid. Delete() also removes image from server"""
@@ -27,6 +39,8 @@ class DiceUpImage:
             message = 'Too many pixels - max resolution is 1920x1080.'
             self.model.delete()
             return message
+
+        self.calculate_dimensions_in_dice()
 
         if self.width < 1 or self.height < 1:
             self.model.delete()
