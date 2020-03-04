@@ -44,7 +44,7 @@ class HomeView(View):
             range_list = calculate_ranges(lower_resolution_list)  # calculates range of pixel val for each dice picture
 
             # creates and saves result image and instruction
-            result_path = settings.MEDIA_ROOT + '/DiceUp/results/'
+            result_path = settings.MEDIA_ROOT + '/DiceUp/'
             result_image, instruction = create_results(dice_up_image, range_list, lower_resolution_list, dice_list)
             result_image.save(f'{result_path}{str(model.pk)}DiceUpPic.png')  # saves result image (png file)
             create_instruction_file(instruction, dice_up_image)  # saves instruction (txt file)
