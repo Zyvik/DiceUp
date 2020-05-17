@@ -19,12 +19,16 @@ result:
 * Maximum dimensions of provided image is set to 1920x1080
 
 
-## Instalation:
+## Installation:
 ### Requirements (requirements.txt included):
-* Python 3
-* Django 2.1.4
+* Python 3.7+
+* Django 3.0.5+
 * Pillow 5.3.0
 
 1. Clone repository
-2. run `python manage.py runserver` in command line
+2. Navigate to folder containing *manage.py* in your console
+2. Run `pip install requirements.txt` if your environment doesn't meet requirements
+2. Run `python manage.py migrate`
+2. Run `python manage.py runserver`
 3. open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser
+10. If for some reason you want to deploy it (why?) - change SECRET_KEY in secrets.py (now it contains trash)
